@@ -10,8 +10,8 @@ import reducer from '../reducers';
 
 const style = theme => ({
   container: {
-    width: '960px',
-    margin: `${theme.spacing.unit * 8}px auto 0`,
+    width: '858px',
+    margin: `${theme.spacing.unit}px auto 0`,
     textAlign: 'center',
   },
 });

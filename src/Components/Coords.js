@@ -22,6 +22,17 @@ const styles = () => ({
   },
   vertical: {
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  verticalHeight: {
+    height: '100px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  label: {
+    lineHeight: 2,
   },
 });
 
@@ -38,8 +49,13 @@ const Coords = ({ classes, variant, char }) => {
   return (
     <ul className={classnames(classes.flexCont, classes[variant])}>
       {coords.map(coordinate => (
-        <li className={classes.flexItem} key={coordinate.id}>
-          <Typography>{coordinate.label}</Typography>
+        <li
+          className={classnames(classes.flexItem, {
+            [classes.verticalHeight]: variant === 'vertical',
+          })}
+          key={coordinate.id}
+        >
+          <Typography className={classes.label}>{coordinate.label}</Typography>
         </li>
       ))}
     </ul>
