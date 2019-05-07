@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
+import Typography from '@material-ui/core/Typography';
 
 const styles = () => ({
   flexCont: {
@@ -9,6 +10,12 @@ const styles = () => ({
     listStyle: 'none',
     padding: 0,
     margin: 0,
+    width: '100%',
+  },
+  flexItem: {
+    flexBasis: '12.5%',
+    maxWidth: '12.5%',
+    width: '12.5%',
   },
   horizontal: {
     flexDirection: 'row',
@@ -29,18 +36,13 @@ const Coords = ({ classes, variant, char }) => {
     }
   }
   return (
-    <div>
-      <ul className={classes.flexCont}>
-        {coords.map(coordinate => (
-          <li
-            className={classnames(classes.flexItem, [classes[variant]])}
-            key={coordinate.id}
-          >
-            {coordinate.label}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={classnames(classes.flexCont, classes[variant])}>
+      {coords.map(coordinate => (
+        <li className={classes.flexItem} key={coordinate.id}>
+          <Typography>{coordinate.label}</Typography>
+        </li>
+      ))}
+    </ul>
   );
 };
 

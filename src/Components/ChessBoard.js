@@ -5,13 +5,12 @@ import Paper from '@material-ui/core/Paper';
 
 import Coords from './Coords';
 
-const styles = theme => ({
-  root: {
-    padding: theme.spacing.unit,
-  },
+const styles = () => ({
   paper: {
     width: '100%',
     height: 'auto',
+    borderRadius: 0,
+    border: '1px solid #837c7c',
   },
 });
 
