@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import cell from './cell';
+import cells from './cell';
 
-const rootReducer = combineReducers({ cell });
+const rootReducer = combineReducers({ cells });
 
 export default rootReducer;

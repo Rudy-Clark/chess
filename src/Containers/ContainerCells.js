@@ -14,8 +14,8 @@ const styles = () => ({
     flexFlow: 'row wrap',
   },
   wrapper: {
-    flexBasis: '113px',
-    width: '113px',
+    flexBasis: '100px',
+    width: '100px',
   },
 });
 

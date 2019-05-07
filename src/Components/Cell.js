@@ -18,7 +18,7 @@ const styles = () => ({
 const Cell = ({ classes, black }) => (
   <div
     className={classnames(classes.root, {
-      [classes[black]]: black,
+      [classes.black]: black,
     })}
   />
 );

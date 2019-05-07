@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 import Coords from './Coords';
-
+import ContainerCells from '../Containers/ContainerCells';
 const styles = () => ({
   paper: {
     width: '100%',
@@ -22,7 +22,7 @@ const styles = () => ({
 const ChessBoard = ({ classes }) => (
   <Paper className={classes.paper}>
     <div className={classes.flexCont}>
-      <div style={{ flexBasis: '800px', alignSelf: 'center' }}>
+      <div style={{ flexBasis: '802px', alignSelf: 'center' }}>
         <Coords variant="horizontal" char="letters" />
       </div>
       <div
@@ -32,13 +32,14 @@ const ChessBoard = ({ classes }) => (
         <div style={{ flexBasis: '28px', alignSelf: 'center' }}>
           <Coords variant="vertical" char="numbers" />
         </div>
-        <div style={{ flexBasis: '800px', alignSelf: 'center' }}>
+        <div style={{ flexBasis: '802px', alignSelf: 'center' }}>
+          <ContainerCells />
         </div>
         <div style={{ flexBasis: '28px', alignSelf: 'center' }}>
           <Coords variant="vertical" char="numbers" />
         </div>
       </div>
-      <div style={{ flexBasis: '800px', alignSelf: 'center' }}>
+      <div style={{ flexBasis: '802px', alignSelf: 'center' }}>
         <Coords variant="horizontal" char="letters" />
       </div>
     </div>
