@@ -33,17 +33,19 @@ const styles = () => ({
   },
   label: {
     lineHeight: 2,
+    color: 'rgba(125, 119, 119, 0.87)',
   },
 });
 
 const Coords = ({ classes, variant, char }) => {
   const coords = [];
+  const count = 8;
   // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < count; i++) {
     if (char === 'letters') {
       coords.push({ label: String.fromCharCode(65 + i), id: i });
     } else if (char === 'numbers') {
-      coords.push({ label: i + 1, id: i });
+      coords.push({ label: count - i, id: i });
     }
   }
   return (
