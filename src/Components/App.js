@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import CssBaseline from '@material-ui/core/CssBaseline';
 
-import themeProvider from './themeProvider';
+import themeProvider from '../themeProvider';
+import ChessBoard from './ChessBoard';
 
 const style = theme => ({
   container: {
-    maxWidth: '400px',
+    maxWidth: '960px',
     margin: `${theme.spacing.unit * 8}px auto 0`,
+    textAlign: 'center',
   },
 });
 
 const App = ({ classes }) => (
   <div className={classes.container}>
-    <h1>Hello World</h1>
+    <ChessBoard />
   </div>
 );
 
