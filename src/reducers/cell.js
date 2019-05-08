@@ -1,4 +1,5 @@
 import _random from 'lodash/random';
+import { SELECT } from '../actions';
 
 const initialState = [];
 
@@ -12,6 +13,7 @@ const generateId = length => {
   }
   return result;
 };
+
 // eslint-disable-next-line no-plusplus
 for (let i = 0; i < 64; i++) {
   const black = ((i % 8) + Math.floor(i / 8)) % 2 === 1;
@@ -19,16 +21,22 @@ for (let i = 0; i < 64; i++) {
     id: generateId(5),
     canMove: false,
     black,
+    knightHere: false,
   });
 }
 
-const cell = (state = initialState, action) => {
+const reducerCell = (state = initialState, action) => {
+  console.log(state);
   switch (action.type) {
-    case 'SELECT':
-      return state;
+    case SELECT:
+      return state.map(cell => {
+        const newCell = { ...cell, knightHere: false };
+        if (newCell.id === action.id) newCell.knightHere = !newCell.knightHere;
+        return newCell;
+      });
     default:
       return state;
   }
 };
 
-export default cell;
+export default reducerCell;

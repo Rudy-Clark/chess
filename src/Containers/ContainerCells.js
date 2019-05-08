@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 
 import Cell from '../Components/Cell';
+import { selectCell } from '../actions';
+import { getFilteredCells } from '../reselect';
 
 const styles = () => ({
   root: {
@@ -19,11 +21,11 @@ const styles = () => ({
   },
 });
 
-const ContainerCells = ({ classes, cells }) => (
+const ContainerCells = ({ classes, cells, handleSelect }) => (
   <div className={classes.root}>
     {cells.map(cell => (
       <div className={classes.wrapper} key={cell.id}>
-        <Cell {...cell} />
+        <Cell handleSelect={handleSelect} {...cell} />
       </div>
     ))}
   </div>
@@ -32,10 +34,20 @@ const ContainerCells = ({ classes, cells }) => (
 ContainerCells.propTypes = {
   classes: PropTypes.object.isRequired,
   cells: PropTypes.array.isRequired,
+  handleSelect: PropTypes.func.isRequired,
 };
 
 const styledComponent = withStyles(styles)(ContainerCells);
 
-const mapStateToProps = ({ cells }) => ({ cells });
+const mapStateToProps = ({ cells }) => ({
+  cells: getFilteredCells(cells),
+});
 
-export default connect(mapStateToProps)(styledComponent);
+const mapDispatchToProps = dispatch => ({
+  handleSelect: id => dispatch(selectCell(id)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(styledComponent);
