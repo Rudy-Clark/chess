@@ -1,5 +1,5 @@
 import _random from 'lodash/random';
-import { SELECT } from '../actions';
+import { SELECT, DESELECT, MOVE } from '../actions';
 
 const initialState = [];
 
@@ -26,12 +26,22 @@ for (let i = 0; i < 64; i++) {
 }
 
 const reducerCell = (state = initialState, action) => {
-  console.log(state);
   switch (action.type) {
-    case SELECT:
+    case SELECT: {
+      const knight = state.filter(cell => cell.knightHere);
+      if (knight.length) return state;
       return state.map(cell => {
         const newCell = { ...cell, knightHere: false };
         if (newCell.id === action.id) newCell.knightHere = !newCell.knightHere;
+        return newCell;
+      });
+    }
+    case DESELECT:
+      return state.map(cell => ({ ...cell, knightHere: false }));
+    case MOVE:
+      return state.map(cell => {
+        const newCell = { ...cell, knightHere: false };
+        if (newCell.id === action.id) newCell.knightHere = true;
         return newCell;
       });
     default:

@@ -5,7 +5,7 @@ import brown from '@material-ui/core/colors/brown';
 import green from '@material-ui/core/colors/green';
 import classnames from 'classnames';
 
-import Knight from './Knight';
+import Knight from '../Containers/KnightCont';
 
 const styles = () => ({
   root: {
@@ -31,7 +31,15 @@ const styles = () => ({
   },
 });
 
-const Cell = ({ id, classes, black, knightHere, canMove, handleSelect }) => (
+const Cell = ({
+  id,
+  classes,
+  black,
+  knightHere,
+  canMove,
+  handleSelect,
+  moveTo,
+}) => (
   <div
     role="button"
     onKeyDown={() => {}}
@@ -45,7 +53,18 @@ const Cell = ({ id, classes, black, knightHere, canMove, handleSelect }) => (
     })}
   >
     {knightHere && <Knight />}
-    {canMove && <div className={classes.overlay} />}
+    {canMove && (
+      <div
+        role="button"
+        onKeyDown={() => {}}
+        tabIndex={-1}
+        className={classes.overlay}
+        onClick={e => {
+          e.stopPropagation();
+          moveTo(id);
+        }}
+      />
+    )}
   </div>
 );
 

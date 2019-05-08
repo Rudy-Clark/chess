@@ -11,8 +11,12 @@ const styles = theme => ({
   },
 });
 
-const Knight = ({ classes }) => (
+const Knight = ({ classes, handleSelect }) => (
   <SvgIcon
+    onClick={e => {
+      e.stopPropagation();
+      handleSelect();
+    }}
     viewBox="0 0 298 298"
     style={{ enableBackground: 'new 0 0 298 298' }}
     color="primary"
@@ -28,26 +32,12 @@ const Knight = ({ classes }) => (
 		c-16.501-54-66.334-83-66.334-83h40.182C191.146,109.889,200.351,116,210.952,116z"
       />
     </g>
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
-    <g />
   </SvgIcon>
 );
 
 Knight.propTypes = {
   classes: PropTypes.object.isRequired,
+  handleSelect: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(Knight);
